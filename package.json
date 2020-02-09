@@ -1,10 +1,24 @@
 {
   "name": "",
   "version": "",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "opusscript": "0.0.7",
+    "remove": "^0.1.5",
     "ytdl-core": "^1.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-polyfill": "^6.26.0",
+    "nodemon": "^2.0.2"
   }
 }

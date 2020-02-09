@@ -1,0 +1,14 @@
+{
+  "actions": {
+    "play": "#play",
+    "stop": "#stop",
+    "pause": "#pause",
+    "resume": "#resume",
+    "skip": "#skip",
+    "playlist": "#playlist"
+  },
+  "starter": "Start",
+  "start": {
+    "hello": "Hello Motherfucker !!"
+  }
+}
