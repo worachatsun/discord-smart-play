@@ -1,3 +1,5 @@
 module.exports = {
-  Ping: require('./ping')
+  Ping: require('./ping'),
+  Play: require('./play'),
+  Stop: require('./stop'),
 };

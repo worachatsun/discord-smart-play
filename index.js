@@ -15,5 +15,5 @@ const disconnect = () => {
   // if (this.connection) this.connection.disconnect();
   process.exit();
 };
-process.on('exit', disconnect);
-process.on('SIGINT', disconnect);
+// process.on('exit', disconnect);
+// process.on('SIGINT', disconnect);

@@ -7,8 +7,10 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
+    "ffmpeg": "^0.0.4",
     "opusscript": "0.0.7",
     "remove": "^0.1.5",
+    "ytdl": "^1.2.0",
     "ytdl-core": "^1.0.5"
   },
   "devDependencies": {
