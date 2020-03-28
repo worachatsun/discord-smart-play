@@ -1,4 +1,7 @@
 const ytdl = require('ytdl-core');
+const youtube = require('../../../services/youtube')
+const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+const regex = new RegExp(expression);
 
 module.exports = {
     name: 'play',
@@ -11,7 +14,16 @@ module.exports = {
             return msg.channel.send('I need the permissions to join and speak in your voice channel!');
         }
 
-        const songInfo = await ytdl.getInfo(args[0]);
+        let songInfo
+
+        if (args[0].match(regex)) {
+            songInfo = await ytdl.getInfo(args[0]);
+        } else {
+            const res = youtube.serachVideoByTitle(args[0])
+            const { items }  = await res.then(res => res.data);
+            songInfo = await ytdl.getInfo(`https://www.youtube.com/watch?v=${items[0].id.videoId}`)
+        }
+
         const song = {
             title: songInfo.title,
             url: songInfo.video_url,
@@ -49,6 +61,7 @@ module.exports = {
 };
 
 function play(guild, song, queue) {
+    console.log(queue)
 	const serverQueue = queue.get(guild.id);
 
 	if (!song) {
@@ -58,13 +71,13 @@ function play(guild, song, queue) {
 	}
 
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-		.on('end', () => {
+		.on('end', async () => {
 			console.log('Music ended!');
-			serverQueue.songs.shift();
-			play(guild, serverQueue.songs[0]);
+			await serverQueue.songs.shift();
+			play(guild, serverQueue.songs[0], queue);
 		})
 		.on('error', error => {
-			console.error(error);
+			console.error('Error message: ', error);
 		});
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
