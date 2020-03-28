@@ -8,6 +8,8 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "ffmpeg": "^0.0.4",
+    "google-auth-library": "^6.0.0",
+    "googleapis": "^48.0.0",
     "opusscript": "0.0.7",
     "remove": "^0.1.5",
     "ytdl": "^1.2.0",
